@@ -5,6 +5,10 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.Observable
 import io.reactivex.Single
 
+/**
+ * Created by nizamalfian on 22/12/2018.
+ */
+
 class ImageFetcher(private val picasso: Picasso, private val startTime: Long){
     fun loadProgressively(imageUrl: String, qualities:List<Int>):Observable<BitmapWithQuality>{
         return qualities

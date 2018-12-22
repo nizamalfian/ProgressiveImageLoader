@@ -8,6 +8,10 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.SingleEmitter
 import java.lang.Exception
 
+/**
+ * Created by nizamalfian on 22/12/2018.
+ */
+
 class CustomImageLoadTarget(private val emitter:SingleEmitter<BitmapWithQuality>,
                             private val quality:Int,
                             private val startTime:Long,

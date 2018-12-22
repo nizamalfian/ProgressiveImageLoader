@@ -18,6 +18,10 @@ import id.co.interactive.progressiveimageloader.viewmodel.ImageViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.DecimalFormat
 
+/**
+ * Created by nizamalfian on 22/12/2018.
+ */
+
 class MainActivity : AppCompatActivity(),MainView{
     private val viewModel=ImageViewModel()
     private val imageUrl=BuildConfig.IMAGE_URL

@@ -8,6 +8,10 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 
+/**
+ * Created by nizamalfian on 22/12/2018.
+ */
+
 class ImageViewModel{
     private val disposable = CompositeDisposable()
     val bitmapResult=MutableLiveData<BitmapResult>()

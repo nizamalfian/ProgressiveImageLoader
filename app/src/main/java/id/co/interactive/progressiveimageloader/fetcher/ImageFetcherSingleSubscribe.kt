@@ -6,6 +6,10 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.SingleEmitter
 import io.reactivex.SingleOnSubscribe
 
+/**
+ * Created by nizamalfian on 22/12/2018.
+ */
+
 class ImageFetcherSingleSubscribe(private val picasso: Picasso,
                                   private val url:String,
                                   private val quality:Int,
