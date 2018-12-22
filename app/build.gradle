@@ -14,7 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String","IMAGE_URL","\"https://picsum.photos/200/200?image=0\""
+        buildConfigField "String","IMAGE_URL","\"https://assets3.thrillist.com/v1/image/2524624/size/tmg-article_tall.jpg\""
     }
     buildTypes {
         release {

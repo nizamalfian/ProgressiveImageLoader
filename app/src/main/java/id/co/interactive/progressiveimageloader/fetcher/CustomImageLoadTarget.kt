@@ -10,6 +10,7 @@ import java.lang.Exception
 
 class CustomImageLoadTarget(private val emitter:SingleEmitter<BitmapWithQuality>,
                             private val quality:Int,
+                            private val startTime:Long,
                             private val unSubscribe:(Target)->Unit):Target {
 
     init {
@@ -26,7 +27,7 @@ class CustomImageLoadTarget(private val emitter:SingleEmitter<BitmapWithQuality>
     }
 
     override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-        emitter.onSuccess(BitmapWithQuality(bitmap as Bitmap, quality))
+        emitter.onSuccess(BitmapWithQuality(bitmap as Bitmap, quality,startTime))
         unSubscribe(this)
     }
 

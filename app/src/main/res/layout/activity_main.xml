@@ -8,7 +8,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/move_to_another_page"
+        android:text="@string/refresh_this_page"
         android:id="@+id/btnLoadImage"
         android:onClick="moveToAnotherPage"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideLeft1"
         app:layout_constraintTop_toTopOf="@+id/guideTop"/>
     <TextView
+        android:id="@+id/txtLabel1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/img1"
@@ -35,6 +36,17 @@
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/use_rxjava"/>
+    <TextView
+        android:id="@+id/txtTimeCounted1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/txtLabel1"
+        app:layout_constraintStart_toStartOf="@+id/img1"
+        app:layout_constraintEnd_toEndOf="@+id/img1"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        tools:text="1000 ms"/>
     <ImageView
         android:id="@+id/img2"
         android:layout_width="0dp"
@@ -46,6 +58,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideLeft2"
         app:layout_constraintTop_toTopOf="@+id/guideTop"/>
     <TextView
+        android:id="@+id/txtLabel2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/img2"
@@ -54,6 +67,27 @@
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/doesn_t_use_rxjava"/>
+    <TextView
+        android:id="@+id/txtTimeCounted2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txtLabel2"
+        app:layout_constraintStart_toStartOf="@+id/img2"
+        app:layout_constraintEnd_toEndOf="@+id/img2"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        tools:text="1000 ms"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/nb_to_see_the_differences_in_any_case_try_to_refresh_this_page_in_several_times_don_t_forget_to_re_open_this_app_after_clear_it_in_start_up_your_task_manager_device"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

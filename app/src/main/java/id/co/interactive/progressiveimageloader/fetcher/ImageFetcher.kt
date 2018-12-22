@@ -5,7 +5,7 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.Observable
 import io.reactivex.Single
 
-class ImageFetcher(private val picasso:Picasso){
+class ImageFetcher(private val picasso: Picasso, private val startTime: Long){
     fun loadProgressively(imageUrl: String, qualities:List<Int>):Observable<BitmapWithQuality>{
         return qualities
                 .map { quality -> Pair(createUrl(imageUrl),quality) }
@@ -20,7 +20,7 @@ class ImageFetcher(private val picasso:Picasso){
 
     fun loadImageAndIgnoreError(url:String,quality:Int):Observable<BitmapWithQuality>{
         return Single
-                .create(ImageFetcherSingleSubscribe(picasso, url, quality))
+                .create(ImageFetcherSingleSubscribe(picasso, url, quality, startTime))
                 .toObservable()
                 .onErrorResumeNext(Observable.empty<BitmapWithQuality>())
     }

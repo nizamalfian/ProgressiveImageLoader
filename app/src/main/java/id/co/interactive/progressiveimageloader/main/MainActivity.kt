@@ -1,5 +1,6 @@
 package id.co.interactive.progressiveimageloader.main
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.graphics.Bitmap
@@ -15,6 +16,7 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapResult
 import id.co.interactive.progressiveimageloader.fetcher.data.ResponseState.*
 import id.co.interactive.progressiveimageloader.viewmodel.ImageViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity(),MainView{
     private val viewModel=ImageViewModel()
@@ -39,14 +41,15 @@ class MainActivity : AppCompatActivity(),MainView{
                 }
                 SUCCESS->{
                     hideProgress()
-                    it.bitmap?.let { bitmap -> showImage(bitmap) }
+                    it.bitmap?.let { bitmap -> showImage(bitmap,result.startTime as Long) }
                 }
             }
         }
     }
 
-    override fun showImage(bitmap: Bitmap) {
+    override fun showImage(bitmap: Bitmap,startTime:Long) {
         img1.setImageBitmap(bitmap)
+        showTimeCounterResult(startTime,true)
     }
 
     override fun showProgress() {
@@ -66,25 +69,38 @@ class MainActivity : AppCompatActivity(),MainView{
         viewModel.unSubscribe()
     }
 
+    @SuppressLint("SetTextI18n")
+    override fun showTimeCounterResult(startTime:Long,isUsingRxJava:Boolean) {
+        val difference:Double=(((System.nanoTime()-startTime)/ 1000000)*0.001)
+        val df = DecimalFormat("#.####")
+        val result="${df.format(difference)} seconds"
+        if(isUsingRxJava)
+            txtTimeCounted1.text=result
+        else
+            txtTimeCounted2.text=result
+    }
+
     private fun loadImageWithRxJava(){
         viewModel.bitmapResult.observe(this, Observer<BitmapResult>{ it -> process(it) })
-        viewModel.loadImages(imageUrl,listOf(3000,10,300))//<-Just random qualities
+        viewModel.loadImages(System.nanoTime(),imageUrl,listOf(3000,10,300))//<-Just random qualities
     }
 
     private fun loadImageWithoutRxJava(){
-        Picasso.get().load(imageUrl).placeholder(R.drawable.img_placeholder).error(R.drawable.img_error_image).into(img2, object : Callback {
-            override fun onSuccess() {
+        val startTime=System.nanoTime()
+        Picasso.get().load(imageUrl).placeholder(R.drawable.img_placeholder).error(R.drawable.img_error_image)
+                .into(img2, object : Callback {
+                    override fun onSuccess() {
+                        showTimeCounterResult(startTime,false)
+                    }
 
-            }
+                    override fun onError(e: Exception) {
 
-            override fun onError(e: Exception) {
-
-            }
-        })
+                    }
+                })
     }
 
     fun moveToAnotherPage(v:View){
-        startActivity(Intent(this,AnotherActivity::class.java))
+        startActivity(Intent(this,MainActivity::class.java))
         finish()
     }
 }

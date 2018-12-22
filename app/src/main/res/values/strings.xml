@@ -4,6 +4,7 @@
     <string name="load_image">Load Image</string>
     <string name="use_rxjava">Use RxJava</string>
     <string name="doesn_t_use_rxjava">Doesn\'t use RxJava</string>
-    <string name="move_to_another_page">Move to another page</string>
     <string name="another_activity">Another Activity</string>
+    <string name="refresh_this_page">Refresh this page</string>
+    <string name="nb_to_see_the_differences_in_any_case_try_to_refresh_this_page_in_several_times_don_t_forget_to_re_open_this_app_after_clear_it_in_start_up_your_task_manager_device">NB : To see the differences in any case, try to refresh this page in several times. Don\'t forget to re-open this app after clear it in start up/your task manager device also. However, it works properly on offline mode as well after image successfully loaded in a first time.</string>
 </resources>

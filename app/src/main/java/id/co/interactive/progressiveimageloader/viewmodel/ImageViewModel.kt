@@ -8,13 +8,13 @@ import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 
-class ImageViewModel {
+class ImageViewModel{
     private val disposable = CompositeDisposable()
-    private val fetcher = ImageFetcher(Picasso.get())
     val bitmapResult=MutableLiveData<BitmapResult>()
 
-    fun loadImages(url:String,qualities:List<Int>){
+    fun loadImages(startTime:Long,url:String,qualities:List<Int>){
         bitmapResult.value= BitmapResult.loading()
+        val fetcher = ImageFetcher(Picasso.get(),startTime)
         disposable.add(fetcher.loadProgressively(url,qualities)
                 .filter{getCurrentQuality()<it.quality}
                 .subscribeBy(
