@@ -1,5 +1,6 @@
 package id.co.interactive.progressiveimageloader.fetcher
 
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import id.co.interactive.progressiveimageloader.fetcher.data.BitmapWithQuality
@@ -18,6 +19,7 @@ class ImageFetcherSingleSubscribe(private val picasso: Picasso,
 
         runningTargets.add(target)
         picasso.load(url)
+                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(target)
     }
 
