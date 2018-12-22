@@ -32,5 +32,5 @@ class ImageFetcher(private val picasso:Picasso){
                 .onErrorResumeNext(Observable.empty<BitmapWithQuality>())
     }
 
-    private fun createUrl(url:String,size:Int):String="$url/$size/$size?image=0" //?image=0 added so image wont be random
+    private fun createUrl(url:String,size:Int):String=url
 }

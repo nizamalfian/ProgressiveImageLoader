@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 
 class ImageViewModel {
     companion object {
-        private const val BASE_IMAGE_URL="https://picsum.photos"
+        private const val BASE_IMAGE_URL="https://cloud.interactive.co.id//myprofit//images//company_logo//181024-082731-387.png"
     }
 
     private val disposable = CompositeDisposable()

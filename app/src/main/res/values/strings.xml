@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Progressive Image Loader</string>
     <string name="error_while_fetching_image">Fetching images failed</string>
+    <string name="load_image">Load Image</string>
+    <string name="use_rxjava">Use RxJava</string>
+    <string name="doesn_t_use_rxjava">Doesn\'t use RxJava</string>
+    <string name="move_to_another_page">Move to another page</string>
+    <string name="another_activity">Another Activity</string>
 </resources>
