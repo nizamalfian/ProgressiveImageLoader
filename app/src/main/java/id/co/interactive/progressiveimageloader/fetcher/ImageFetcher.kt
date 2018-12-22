@@ -6,18 +6,11 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 class ImageFetcher(private val picasso:Picasso){
-    fun loadProgressively(baseUrl: String,qualities:List<Int>):Observable<BitmapWithQuality>{
+    fun loadProgressively(imageUrl: String, qualities:List<Int>):Observable<BitmapWithQuality>{
         return qualities
-                .map { quality -> Pair(createUrl(baseUrl,quality),quality) }
+                .map { quality -> Pair(createUrl(imageUrl),quality) }
                 .map {loadImageAndIgnoreError(it)}
                 .reduce { o1, o2 -> Observable.merge(o1,o2)}
-    }
-
-    fun loadProgressively(baseUrl:String,quality1:Int,quality2:Int):Observable<BitmapWithQuality>{
-        return Observable.merge(
-                loadImageAndIgnoreError(createUrl(baseUrl,quality1),quality2),
-                loadImageAndIgnoreError(createUrl(baseUrl,quality1),quality2)
-        )
     }
 
     fun loadImageAndIgnoreError(urlWithQuality:Pair<String,Int>):Observable<BitmapWithQuality>{
@@ -32,5 +25,5 @@ class ImageFetcher(private val picasso:Picasso){
                 .onErrorResumeNext(Observable.empty<BitmapWithQuality>())
     }
 
-    private fun createUrl(url:String,size:Int):String=url
+    private fun createUrl(url:String):String=url
 }

@@ -18,13 +18,14 @@
         app:layout_constraintVertical_bias=".2"/>
     <ImageView
         android:id="@+id/img1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        tools:src="@drawable/img_loading_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/img2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:src="@drawable/img_placeholder"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideBottom"
+        app:layout_constraintEnd_toEndOf="@+id/guideRight1"
+        app:layout_constraintStart_toStartOf="@+id/guideLeft1"
+        app:layout_constraintTop_toTopOf="@+id/guideTop"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,13 +37,14 @@
         android:text="@string/use_rxjava"/>
     <ImageView
         android:id="@+id/img2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        tools:src="@drawable/img_loading_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:src="@drawable/img_placeholder"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideBottom"
+        app:layout_constraintEnd_toEndOf="@+id/guideRight2"
+        app:layout_constraintStart_toStartOf="@+id/guideLeft2"
+        app:layout_constraintTop_toTopOf="@+id/guideTop"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,5 +54,40 @@
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/doesn_t_use_rxjava"/>
-
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/guideTop"
+        app:layout_constraintGuide_percent=".4"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/guideBottom"
+        app:layout_constraintGuide_percent=".6"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/guideLeft1"
+        app:layout_constraintGuide_percent=".15"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/guideRight1"
+        app:layout_constraintGuide_percent=".42"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/guideLeft2"
+        app:layout_constraintGuide_percent=".58"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/guideRight2"
+        app:layout_constraintGuide_percent=".85"/>
 </android.support.constraint.ConstraintLayout>

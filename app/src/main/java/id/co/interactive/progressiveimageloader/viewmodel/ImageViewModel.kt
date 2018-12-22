@@ -9,17 +9,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 
 class ImageViewModel {
-    companion object {
-        private const val BASE_IMAGE_URL="https://cloud.interactive.co.id//myprofit//images//company_logo//181024-082731-387.png"
-    }
-
     private val disposable = CompositeDisposable()
     private val fetcher = ImageFetcher(Picasso.get())
     val bitmapResult=MutableLiveData<BitmapResult>()
 
-    fun loadImages(qualities:List<Int>){
+    fun loadImages(url:String,qualities:List<Int>){
         bitmapResult.value= BitmapResult.loading()
-        disposable.add(fetcher.loadProgressively(BASE_IMAGE_URL,qualities)
+        disposable.add(fetcher.loadProgressively(url,qualities)
                 .filter{getCurrentQuality()<it.quality}
                 .subscribeBy(
                         onNext = {applyImage(it)},
